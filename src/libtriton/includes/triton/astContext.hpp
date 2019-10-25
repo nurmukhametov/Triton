@@ -51,16 +51,25 @@ namespace triton {
     /*! \brief AST Context - Used as AST builder. */
     class AstContext : public std::enable_shared_from_this<AstContext> {
       private:
-        //! Modes API
-        triton::modes::SharedModes modes;
-
         //! String formater for ast
         triton::ast::representations::AstRepresentation astRepresentation;
 
         //! Maps a concrete value and ast node for a variable name.
         std::map<std::string, std::pair<triton::ast::WeakAbstractNode, triton::uint512>> valueMapping;
 
+        //! Clears nodes garbage collected
+        void clearGarbage(void);
+
       public:
+        //! Modes API
+        triton::modes::SharedModes modes;
+
+        //! Garbage collected nodes.
+        std::list<SharedAbstractNode> gc;
+
+        //! Level of recursion during the shared_ptr destruction
+        triton::uint32 recursionLevel;
+
         //! Constructor
         TRITON_EXPORT AstContext(const triton::modes::SharedModes& modes);
 
@@ -294,6 +303,9 @@ namespace triton {
 
         //! Prints the given node with this context representation
         TRITON_EXPORT std::ostream& print(std::ostream& stream, AbstractNode* node);
+
+        //! Returns true if the mode is enabled.
+        TRITON_EXPORT bool isModeEnabled(triton::modes::mode_e mode) const;
     };
 
     //! Shared AST context

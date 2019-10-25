@@ -19,6 +19,7 @@ class TestAstConversion(unittest.TestCase):
         """Define the arch."""
         self.Triton = TritonContext()
         self.Triton.setArchitecture(ARCH.X86_64)
+        self.Triton.setMode(MODE.ITERATIVE_GC, True)
 
         self.astCtxt = self.Triton.getAstContext()
 
