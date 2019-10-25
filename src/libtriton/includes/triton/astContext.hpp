@@ -47,6 +47,8 @@ namespace triton {
    *  @{
    */
 
+    extern int countRefAstCtx;
+
     //! \class AstContext
     /*! \brief AST Context - Used as AST builder. */
     class AstContext : public std::enable_shared_from_this<AstContext> {
