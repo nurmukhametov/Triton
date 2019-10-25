@@ -22,6 +22,7 @@ namespace triton {
 
     int countRefAstCtx;
 
+
     AstContext::AstContext(const triton::modes::SharedModes& modes)
       : modes(modes) {
       this->recursionLevel = 0;

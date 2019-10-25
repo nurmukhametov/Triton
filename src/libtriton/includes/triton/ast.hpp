@@ -95,7 +95,7 @@ namespace triton {
         TRITON_EXPORT AbstractNode(triton::ast::ast_e type, const SharedAstContext& ctxt);
 
         //! Destructor.
-        TRITON_EXPORT virtual ~AbstractNode();
+        TRITON_EXPORT ~AbstractNode();
 
         //! Access to its context
         TRITON_EXPORT SharedAstContext getContext(void) const;
